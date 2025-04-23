@@ -1,4 +1,4 @@
-package services;
+package junit5.services;
 
 public class CalculatorService {
 

@@ -1,7 +1,5 @@
-package services;
+package junit5.services;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -9,8 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 public class CalculatorServiceTestJUnit5 {
 
@@ -43,7 +40,7 @@ public class CalculatorServiceTestJUnit5 {
 	public void addTwoNumbersTest() {
 		System.out.println("addTwoNumbersTest Test case");
 		int actualResult = CalculatorService.addTwoNumbers(12, 12);
-		int expectedResult = 24;
+		int expectedResult = 26;
 		Assertions.assertEquals(expectedResult, actualResult);
 
 	}

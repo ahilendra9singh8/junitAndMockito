@@ -1,0 +1,23 @@
+##Junit5 ==> Testing specific units of code independently.
+Junit5 = JUnit Platform + JUnit Jupiter + JUnit Vintage
+1.JUnit Platform – Test ko discover aur run karta hai
+2.JUnit Jupiter – Ye JUnit 5 ke liye new programming model aur extension model provide karta hai
+3.JUnit Vintage – Purane JUnit 3/4 ke tests ko support karta hai
+
+##Advantages ==> 
+1.find bugs early.
+2.Easy to fix bugs.
+3.Reduce the cost and time.
+
+##Annotations ==>
+@Test               --> 	Is method ko test case banata hai
+@BeforeEach	        -->     Har test se pehle ye method chalega
+@AfterEach	        -->     Har test ke baad ye method chalega
+@BeforeAll	        -->     Sabhi tests ke start hone se pehle chalega (static hona chahiye)
+@AfterAll	        -->     Sabhi tests ke baad chalega (static hona chahiye)
+@DisplayName	    -->     Test ka readable naam dikhata hai
+@Disabled	        -->     Kisi test ko temporarily disable karne ke liye
+@Nested	            -->     Nested test classes define karne ke liye
+@Tag	            -->     Tests ko tag karne ke liye (filtering ke liye helpful)
+@ParameterizedTest	-->     Multiple values ke sath test run karne ke liye
+@ValueSource	    -->     @ParameterizedTest me values dene ke liye use hota hai
