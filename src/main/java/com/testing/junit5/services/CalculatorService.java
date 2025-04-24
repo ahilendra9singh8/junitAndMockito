@@ -1,4 +1,4 @@
-package junit5.services;
+package com.testing.junit5.services;
 
 public class CalculatorService {
 

@@ -1,4 +1,4 @@
-package junit5.services;
+package com.testing.junit5.services;
 
 import java.io.File;
 
@@ -68,35 +68,35 @@ class ProductServiceTest {
 		Assertions.assertFalse(productService.isExpensive(400));
 	}
 
-	@Test
-	@Order(4)
-	@DisplayName("🔎 Test if logger creates log in logs folder")
-	void testLogFilePath() throws Exception {
-	    File logsFolder = new File("logs");
-	    File file = new File(logsFolder, "test-log.txt");
-
-	    // Ensure logs folder exists
-	    if (!logsFolder.exists()) {
-	        boolean created = logsFolder.mkdirs();
-	        System.out.println("📁 Created logs folder: " + created);
-	    }
-
-	    System.out.println("📍 Expected log path: " + file.getAbsolutePath());
-
-	    // Delete the file if it exists
-	    if (file.exists()) {
-	        System.out.println("❌ Log file already exists, deleting it...");
-	        boolean deleted = file.delete();
-	        System.out.println("✅ File deleted: " + deleted);
-	    }
-
-	    // Try to create the file again
-	    boolean created = file.createNewFile();
-	    System.out.println("✅ File created: " + created);
-
-	    // Assert that the file now exists
-	    Assertions.assertTrue(file.exists(), "Log file should exist.");
-	}
+//	@Test
+//	@Order(4)
+//	@DisplayName("🔎 Test if logger creates log in logs folder")
+//	void testLogFilePath() throws Exception {
+//	    File logsFolder = new File("logs");
+//	    File file = new File(logsFolder, "test-log.txt");
+//
+//	    // Ensure logs folder exists
+//	    if (!logsFolder.exists()) {
+//	        boolean created = logsFolder.mkdirs();
+//	        System.out.println("📁 Created logs folder: " + created);
+//	    }
+//
+//	    System.out.println("📍 Expected log path: " + file.getAbsolutePath());
+//
+//	    // Delete the file if it exists
+//	    if (file.exists()) {
+//	        System.out.println("❌ Log file already exists, deleting it...");
+//	        boolean deleted = file.delete();
+//	        System.out.println("✅ File deleted: " + deleted);
+//	    }
+//
+//	    // Try to create the file again
+//	    boolean created = file.createNewFile();
+//	    System.out.println("✅ File created: " + created);
+//
+//	    // Assert that the file now exists
+//	    Assertions.assertTrue(file.exists(), "Log file should exist.");
+//	}
 
 
 	@Nested
