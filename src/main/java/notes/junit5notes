@@ -1,8 +1,24 @@
 ##Junit5 ==> Testing specific units of code independently.
+Testing small parts(units) of a spring boot application, like methods or classes, to ensure work correc
 Junit5 = JUnit Platform + JUnit Jupiter + JUnit Vintage
 1.JUnit Platform – Test ko discover aur run karta hai
 2.JUnit Jupiter – Ye JUnit 5 ke liye new programming model aur extension model provide karta hai
 3.JUnit Vintage – Purane JUnit 3/4 ke tests ko support karta hai
+
+##Types of Software testing
+1.Functional Testing (Validating Features)
+-> It ensures the software works as expected
+a.)Unit Testing -> Tests individual methods/classes (done by developers)
+b.)Integration Testing -> Tests Interaction between multiple components
+c.)System Testing -> Tests the whole application as a single unit.
+d.)User Acceptance Testing (UAT) End-users test if the software meets business needs.
+
+2.Non-Functional Testing (Performance & Security)
+-> It ensures system reliability, performance, and security
+a.)Performance Testing -> Checks speed & scalability.
+b.)Load Testing -> Simulates real-world usage.
+c.)Security Testing -> Identifies Vulnerabilities.
+d.)Usability Testing -> Tests user-friendliness.
 
 ##Advantages ==> 
 1.find bugs early.
@@ -21,3 +37,16 @@ Junit5 = JUnit Platform + JUnit Jupiter + JUnit Vintage
 @Tag	            -->     Tests ko tag karne ke liye (filtering ke liye helpful)
 @ParameterizedTest	-->     Multiple values ke sath test run karne ke liye
 @ValueSource	    -->     @ParameterizedTest me values dene ke liye use hota hai
+
+
+
+##Mockito -->
+Mockito is used with JUnit 5 to mock dependencies in unit tests so that you can test a class in isolation without relying on real implementations.
+
+##Annotations ==>
+@Mock	                                 -->       Creates a mock instance of a class/interface.
+@InjectMocks	                         -->       Injects mock dependencies into the class under test.
+@Spy	                                 -->       Wraps a real object, allowing some real methods and some mocked.
+@Captor	                                 -->       Creates an ArgumentCaptor for capturing method arguments.
+@MockBean	                             -->       (Spring Boot only) Mocks a bean in the Spring application context.
+@ExtendWith(MockitoExtension.class)	     -->       Integrates Mockito with JUnit 5. Must be added at the class level.
