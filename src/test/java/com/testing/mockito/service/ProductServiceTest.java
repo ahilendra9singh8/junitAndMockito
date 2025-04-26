@@ -1,13 +1,19 @@
 package com.testing.mockito.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import java.util.Optional;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.testing.mockito.entity.Product;
 import com.testing.mockito.repository.ProductRepository;
 
 @ExtendWith(SpringExtension.class)
@@ -21,91 +27,41 @@ class ProductServiceTest {
 
 	@InjectMocks
 	private ProductService productService;
-	
-	
+
 	@Test
-	void testSavedProduct() {
-		
+	void testSaveProduct() {
+		Product product = new Product(null, "Phone", 999.99);
+		Product savedProduct = new Product(1L, "Phone", 999.99);
+
+		when(productRepository.save(product)).thenReturn(savedProduct);
+
+		Product result = productService.saveProduct(product);
+
+		Assertions.assertNotNull(result.getId());
+		Assertions.assertEquals("Phone", result.getName());
+		verify(notificationService).notifyProductCreated("Phone");
+	}
+
+	@Test
+	void testGetProductById_Found() {
+		Product product = new Product(1L, "Phone", 999.99);
+		when(productRepository.findById(1L)).thenReturn(Optional.of(product));
+
+		Optional<Product> result = productService.getProductById(1L);
+
+		Assertions.assertTrue(result.isPresent());
+		Assertions.assertEquals("Phone", result.get().getName());
+	}
+
+	@Test
+	void testGetProductById_NotFound() {
+		when(productRepository.findById(2L)).thenReturn(Optional.empty());
+
+		Optional<Product> result = productService.getProductById(2L);
+
+		Assertions.assertFalse(result.isPresent());
 	}
 }
-
-
-
-//package com.example.productapp.service;
-//
-//import com.example.productapp.entity.Product;
-//import com.example.productapp.repository.ProductRepository;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
-//import org.mockito.*;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.junit.jupiter.SpringExtension;
-//
-//import java.util.Optional;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//import static org.mockito.Mockito.*;
-//
-//@ExtendWith(SpringExtension.class)
-//class ProductServiceTest {
-//
-//    @Mock
-//    private ProductRepository productRepository;
-//
-//    @Mock
-//    private NotificationService notificationService;
-//
-//    @InjectMocks
-//    private ProductService productService;
-//
-//    @Test
-//    void testSaveProduct() {
-//        Product product = new Product(null, "Phone", 999.99);
-//        Product savedProduct = new Product(1L, "Phone", 999.99);
-//
-//        when(productRepository.save(product)).thenReturn(savedProduct);
-//
-//        Product result = productService.saveProduct(product);
-//
-//        assertNotNull(result.getId());
-//        assertEquals("Phone", result.getName());
-//        verify(notificationService).notifyProductCreated("Phone");
-//    }
-//
-//    @Test
-//    void testGetProductById_Found() {
-//        Product product = new Product(1L, "Phone", 999.99);
-//        when(productRepository.findById(1L)).thenReturn(Optional.of(product));
-//
-//        Optional<Product> result = productService.getProductById(1L);
-//
-//        assertTrue(result.isPresent());
-//        assertEquals("Phone", result.get().getName());
-//    }
-//
-//    @Test
-//    void testGetProductById_NotFound() {
-//        when(productRepository.findById(2L)).thenReturn(Optional.empty());
-//
-//        Optional<Product> result = productService.getProductById(2L);
-//
-//        assertFalse(result.isPresent());
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //package com.example.productapp.controller;
 //
